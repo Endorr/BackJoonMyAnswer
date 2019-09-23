@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int check(int);
+
+int main(){
+    int min,max,sum=0,minimum=-1,isFirst=1;
+    scanf("%d %d",&min,&max);
+    if(min==1)
+      min++;
+    for(int i=min;i<max+1;i++){
+         if(check(i)&&isFirst){
+             isFirst=0;
+             minimum=i;
+             sum+=i;
+         }
+        else if(check(i)){
+            sum+=i;
+        }
+    }
+    
+    if(minimum==-1){
+        printf("%d",minimum);
+    }
+    else{
+        printf("%d\n%d",sum,minimum);
+    }
+}
+
+int check(int num){
+        for(int i=2;i<num;i++){
+            if(num%i==0){
+                return 0;
+            }
+        }
+    return 1;
+    }
