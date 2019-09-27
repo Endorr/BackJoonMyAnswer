@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+char stack[51] = { 0 };//스택 초기화
+int top = -1;//스택의 가장 최근 원소의 위치를 표시할 변수
+int balance = 0; //소괄호 간의 균형을 체크할 변수
+int breakPoint=0;
+
+char pop() {
+	return stack[top--];
+}
+
+void push(char ch) {//push에서는 맞든 안맞든 일단 집어넣고 balance 변수만 바뀌도록 했습니다.
+	stack[++top] = ch;
+	if (ch == '(') {
+		balance++;
+	}
+	else if (ch == ')') {
+		balance--;
+		if (balance < 0) {
+			breakPoint = 1;
+		}
+	}
+}
+
+void cleanStack() {//배열 초기화
+	for (int i = top; i >-1; i--) {
+		stack[i] = 0;
+	}
+	breakPoint = 0;
+	balance = 0;
+	top = -1;
+}
+
+void check() {
+	if (balance == 0&&!breakPoint) {
+		printf("YES\n");
+	}
+	else {
+		printf("NO\n");
+	}
+}
+
+int main() {
+	int caseNum;
+	scanf("%d", &caseNum);
+	getchar();
+	for (int i = 0; i < caseNum; i++) {
+		char temp = 0;
+		do {
+			scanf("%c", &temp);
+			push(temp);
+		} while (temp != '\n');
+		if (top>=2)
+			check();
+		else {
+			printf("NO\n");
+		}
+		cleanStack();
+	}
+	return 0;
+}
