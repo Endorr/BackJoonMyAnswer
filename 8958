@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int count(char* chArray,int len) {
+	int score = 0;
+	int combo = 0;
+	for (int i = len-1; i > -1; i--) {
+		if (chArray[i] == 'X') {
+			combo = 0;
+		}
+		else if (combo == 0) {
+			score += 1;
+			combo++;
+		}
+		else {
+			score += 1;
+			score += combo++;
+		}
+	}
+	return score;
+}
+
+int main() {
+	int test;
+	char str[82];
+	scanf("%d", &test);
+	for (int i = 0; i < test; i++) {
+		int score;
+		scanf("%s", str);
+		score=count(str, strlen(str));
+		printf("%d\n", score);
+	}
+}
