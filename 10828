@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	int a;
+	int big, small;
+	scanf("%d", &a);
+	int* temp = (int*)malloc(sizeof(int)*a);
+	for (int i = 0; i < a; i++) {
+		scanf("%d", &temp[i]);
+		if (i == 0) {
+			big = small = temp[i];
+		}
+		if (temp[i] > big) {
+			big = temp[i];
+		}
+		if (temp[i] < small) {
+			small = temp[i];
+		}
+	}
+	printf("%d %d", small, big);
+	return 0;
+}
