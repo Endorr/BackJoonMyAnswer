@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int ten(int a) {
+	int temp2 = a;
+	int temp = (int)a / 100;
+	temp2 -= temp*100;
+	temp2 = (int)temp2 / 10;
+	return temp2;
+}
+
+int one(int a) {
+	int temp2 = a;
+	int temp = (int)a / 100;
+	temp2-= temp*100;
+	temp2 -= ten(a)*10;
+	return temp2;
+}
+
+int main() {
+	int a, b;
+	scanf("%d %d", &a, &b);
+	int temp = (int)b / 100;
+	printf("%d\n", a*one(b));
+	printf("%d\n", a*ten(b));
+	printf("%d\n", a*temp);
+	printf("%d\n", a*b);
+	return 0;
+}
