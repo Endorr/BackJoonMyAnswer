@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	int num=9, big=-1, index = 0;;
+	//scanf("%d", &num);
+	int* numA = (int*)malloc(sizeof(int)*num);
+	for (int i = 0; i < num; i++){
+		scanf("%d", &numA[i]);
+		if (big < numA[i]) {
+			big = numA[i];
+			index = i + 1;
+		}
+	}
+	printf("%d\n%d", big, index);
+	return 0;
+}
