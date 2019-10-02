@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 char stack[51] = { 0 };//스택 초기화
 int top = -1;//스택의 가장 최근 원소의 위치를 표시할 변수
