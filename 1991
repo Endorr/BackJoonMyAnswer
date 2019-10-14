@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+	char ch;
+	struct Node* Lnode;
+	struct Node* Rnode;
+}node;
+
+node* makeNode(char tempCh) {
+	node* tempNode;
+
+	tempNode = (node*)malloc(sizeof(node));
+	tempNode->ch = tempCh;
+	tempNode->Lnode = NULL;
+	tempNode->Rnode = NULL;
+	return tempNode;
+}
+
+void makeTree(node* parent,node* child,int isLeft) {
+	if (isLeft)
+		parent->Lnode = child;
+	else
+		parent->Rnode = child;
+}
+
+void preOrder(node* root) {
+	if (root != NULL) {
+		printf("%c", root->ch);
+		preOrder(root->Lnode);
+		preOrder(root->Rnode);
+	}
+}
+
+void midOrder(node* root) {
+	if (root != NULL) {
+		midOrder(root->Lnode);
+		printf("%c", root->ch);
+		midOrder(root->Rnode);
+	}
+}
+
+void postOrder(node* root) {
+	if (root != NULL) {
+		postOrder(root->Lnode);
+		postOrder(root->Rnode);
+		printf("%c", root->ch);
+	}
+}
+
+node* find(node* root,char ch) {
+	node* temp = root;
+	if (temp->ch == ch) {
+		
+	}
+	else if(temp->Lnode){
+		node* temp2 = temp;
+		temp = find(temp->Lnode, ch);
+		if (!temp) {
+			if (temp2->Rnode) {
+				temp = find(temp2->Rnode, ch);
+			}
+		}
+	}
+	else if (temp->Rnode) {
+		temp = find(temp->Rnode, ch);
+	}
+	else {
+		temp = NULL;
+	}
+		
+	return temp;
+}
+
+int main() {
+	int caseNum;
+	int isFirst = 1;
+	node* rootNode;
+
+	scanf("%d", &caseNum);
+	getchar();
+
+	while (caseNum > 0) {
+		char temp;
+		node* parent;
+
+		if (isFirst) {
+			isFirst = 0;
+			scanf("%c", &temp);
+			getchar();
+			rootNode = makeNode(temp);
+			parent = rootNode;
+		}
+		else {
+			scanf("%c", &temp);
+			getchar();
+			parent = find(rootNode, temp);
+		}
+
+		scanf("%c", &temp);
+		getchar();
+		if (temp != '.') {
+			makeTree(parent, makeNode(temp), 1);
+		}
+
+		scanf("%c", &temp);
+		getchar();
+		if (temp != '.') {
+			makeTree(parent, makeNode(temp), 0);
+		}
+		caseNum--;
+	}
+
+	preOrder(rootNode);
+	printf("\n");
+	midOrder(rootNode);
+	printf("\n");
+	postOrder(rootNode);
+	printf("\n");
+	return 0;
+}
