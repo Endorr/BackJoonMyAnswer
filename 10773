@@ -9,7 +9,6 @@ int stack[max];
 
 int pop(){
     if(top==-1){
-        
     }
     else{
         return stack[top--];
