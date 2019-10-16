@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>//pow 함수를 쓰려는 사람은 필요할 것.
 
 int ten(int a) {
 	int temp2 = a;
