@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//c는 충분히 빠르기 때문에 모든 순회를 재귀적으로 구성하였다.
+
 typedef struct Node {
 	char ch;
 	struct Node* Lnode;
