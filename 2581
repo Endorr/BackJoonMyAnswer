@@ -4,7 +4,8 @@
 int check(int);
 
 int main(){
-    int min,max,sum=0,minimum=-1,isFirst=1;
+    int min,max,sum=0,minimum=-1;
+    int isFirst=1;//bool
     scanf("%d %d",&min,&max);
     if(min==1)
       min++;
