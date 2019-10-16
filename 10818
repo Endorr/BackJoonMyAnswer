@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 int main() {
-	int a;
+	int num;
 	int big, small;
-	scanf("%d", &a);
-	int* temp = (int*)malloc(sizeof(int)*a);
-	for (int i = 0; i < a; i++) {
+	scanf("%d", &num);
+	int* temp = (int*)malloc(sizeof(int)*num);
+	for (int i = 0; i < num; i++) {
 		scanf("%d", &temp[i]);
 		if (i == 0) {
 			big = small = temp[i];
