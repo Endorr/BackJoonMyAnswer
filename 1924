@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void week(int a) {
+	//1.월
+	switch (a) {
+		case 1:
+			printf("MON\n");
+			break;
+		case 2:
+			printf("TUE\n");
+			break;
+		case 3:
+			printf("WED\n");
+			break;
+		case 4:
+			printf("THU\n");
+			break;
+		case 5:
+			printf("FRI\n");
+			break;
+		case 6:
+			printf("SAT\n");
+			break;
+		case 0:
+			printf("SUN\n");
+			break;
+		case 7:
+			printf("SUN\n");
+			break;
+	}
+}
+
+void test(int month, int day) {
+	switch (month) {
+	case 1:
+		week(day % 7);
+		break;
+	case 2:
+		week((day+3) % 7);
+		break;
+	case 3:
+		week((day+3) % 7);
+		break;
+	case 4:
+		week((day+6) % 7);
+		break;
+	case 5:
+		week((day+1) % 7);
+		break;
+	case 6:
+		week((day+4) % 7);
+		break;
+	case 7:
+		week((day+6) % 7);
+		break;
+	case 8:
+		week((day+2) % 7);
+		break;
+	case 9:
+		week((day+5) % 7);
+		break;
+	case 10:
+		week(day % 7);
+		break;
+	case 11:
+		week((day+3) % 7);
+		break;
+	case 12:
+		week((day+5) % 7);
+		break;
+	default:
+		break;
+	}
+}
+
+int main() {
+	int month, day;
+	scanf("%d %d", &month, &day);
+	test(month, day);
+	return 0;
+}
