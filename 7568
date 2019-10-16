@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct Node {
+	int x;
+	int y;
+	int score;
+}node;
+
+int main() {
+	int caseNum;
+	scanf("%d", &caseNum);
+	node* array = (node*)malloc(sizeof(node)*caseNum);
+	for (int i = 0; i < caseNum; i++) {
+		scanf("%d %d", &array[i].x, &array[i].y);
+		array[i].score = 1;
+	}
+	for (int i = 0; i < caseNum; i++) {
+		for (int j = 0; j < caseNum; j++) {
+			if (array[i].x < array[j].x&&array[i].y < array[j].y) {
+				array[i].score++;
+			}
+		}
+	}
+	for (int i = 0; i < caseNum; i++) {
+		printf("%d ", array[i].score);
+	}
+	return 0;
+}
