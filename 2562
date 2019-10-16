@@ -3,7 +3,6 @@
 
 int main() {
 	int num=9, big=-1, index = 0;;
-	//scanf("%d", &num);
 	int* numA = (int*)malloc(sizeof(int)*num);
 	for (int i = 0; i < num; i++){
 		scanf("%d", &numA[i]);
