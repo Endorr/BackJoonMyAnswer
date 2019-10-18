@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int arr[10000];
+
+int len(int a) {
+	if (a < 1000) {
+		return 3;
+	}
+	else if (a < 10000) {
+		return 4;
+	}
+	else if (a < 100000) {
+		return 6;
+	}
+	else if (a < 1000000) {
+		return 7;
+	}
+	else {
+		return 8;
+	}
+}
+
+int isInclude(int a) {
+	int leng = len(a);
+	char* ch = (char*)malloc(sizeof(char)*leng);
+	sprintf(ch, "%d", a);
+	for (int i = leng; i > 2; i--) {
+		if (ch[i - 1] == '6'&&ch[i - 2] == '6'&&ch[i - 3] == '6') {
+			return a;
+		}
+	}
+	return 0;
+	
+}
+
+void fill() {
+	arr[0] = 666;
+	for (int i = 1; i < 10000; i++) {
+		for (int j = arr[i - 1] + 1;; j++) {
+			int temp = isInclude(j);
+			if (temp) {
+				arr[i] = temp;
+				break;
+			}
+		}
+	}
+}
+
+int main() {
+	fill();
+	int caseNum;
+	scanf("%d", &caseNum);
+	printf("%d", arr[caseNum-1]);
+	return 0;
+}
