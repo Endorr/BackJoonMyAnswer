@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double average(int* tempArray, int tempSize);
+
+double calcul(int* tempArray, int tempSize);
+
+int main() {
+	int caseNum;
+	scanf("%d", &caseNum);
+	int* caseArray = (int*)malloc(sizeof(int)*caseNum);
+	double* answerArray = (double*)malloc(sizeof(double)*caseNum);
+	for (int i = 0; i < caseNum; i++) {
+		scanf("%d", &caseArray[i]);
+		int* tempArray = (int*)malloc(sizeof(int)*caseArray[i]);
+		for (int j = 0; j < caseArray[i]; j++) {
+			scanf("%d", &tempArray[j]);
+		}
+		printf("%.3lf%\n", roundf(calcul(tempArray, caseArray[i]) * 1000) / 1000);
+	}
+	return 0;
+}
+
+double average(int* tempArray, int tempSize) {
+	int sum = 0;
+	for (int i = 0; i<tempSize; i++) {
+		sum+=tempArray[i];
+	}
+	return sum /(double)tempSize;
+}
+
+double calcul(int* tempArray, int tempSize) {
+	double averageNum = average(tempArray, tempSize);
+	int avergaeCase = 0;
+	for (int i = 0; i < tempSize; i++) {
+		if (tempArray[i] > averageNum) {
+			avergaeCase++;
+		}
+	}
+	return (double)avergaeCase / tempSize * 100;
+}
+
