@@ -1,0 +1,34 @@
+#include <stdio.h>
+#define size 1000
+
+int arr[size];
+
+
+int main() {
+	int caseNum;
+	int change=0;
+	scanf("%d", &caseNum);
+	for (int i = 0; i < caseNum; i++) {
+		scanf("%d", &arr[i]);
+	}
+	for (int i = 0; i < caseNum-1; i++) {
+		for (int j = 0; j < caseNum-1-i; j++) {
+			if (arr[j] > arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				change = 1;
+			}
+		}
+		if (change) {
+			change = 0;
+		}
+		else {
+			break;
+		}
+	}
+	for (int i = 0; i < caseNum; i++) {
+		printf("%d\n", arr[i]);
+	}
+	return 0;
+}
