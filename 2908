@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+void idiot(int num, char* arr) {
+	arr[2] = num / 100;
+	arr[1] = num / 10 - num / 100 * 10;
+	arr[0] = num - arr[2] * 100 - arr[1] * 10;
+}
+
+int main() {
+	int a, b;
+	char aArr[3];
+	char bArr[3];
+	scanf("%d %d", &a, &b);
+	idiot(a, aArr);
+	idiot(b, bArr);
+	int who = 0;
+	for (int i = 0; i < 3; i++) {
+		if (aArr[i] < bArr[i]) {
+			who = 1;
+			break;
+		}
+		else if (aArr[i] > bArr[i]) {
+			who = 0;
+			break;
+		}
+	}
+	if (who) {
+		for (int i = 0; i < 3; i++) {
+			printf("%d", bArr[i]);
+		}
+	}
+	else {
+		for (int i = 0; i < 3; i++) {
+			printf("%d", aArr[i]);
+		}
+	}
+	return 0;
+}
