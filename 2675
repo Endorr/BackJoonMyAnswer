@@ -1,0 +1,25 @@
+#include <stdio.h>
+#define MAX 20
+
+void print(int re, char* arr) {
+	for (int i = 0; arr[i] != '\0'; i++) {
+		for (int j = 0; j < re; j++) {
+			printf("%c", arr[i]);
+		}
+	}
+	printf("\n");
+}
+
+int main() {
+	char arr[MAX];
+	int tryNum;
+	int re;
+
+	scanf("%d", &tryNum);
+	getchar();
+	for (int i = 0; i < tryNum; i++) {
+		scanf("%d", &re);
+		scanf("%s", arr);
+		print(re, arr);
+	}
+}
