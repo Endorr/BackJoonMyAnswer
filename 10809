@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define max 1000
+
+int main() {
+	char arr[max];
+	int chArr[26];
+	for (int i = 0; i < 26; i++) {
+		chArr[i] = -1;
+	}
+	scanf("%s", arr);
+	for (int j = 97; j < 123; j++) {
+		for (int i = 0; arr[i] != '\0'; i++) {
+			if (arr[i] == j) {
+				chArr[j - 97] = i;
+				break;
+			}
+		}
+	}
+	for (int i = 0; i < 26; i++) {
+		printf("%d ",chArr[i]);
+	}
+	return 0;
+}
