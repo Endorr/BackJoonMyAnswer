@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	int max, target;
+	scanf("%d %d", &max, &target);
+	
+	int* arr = (int*)malloc(sizeof(int)*max);
+	for (int i = 0; i < max; i++) {
+		scanf("%d", &arr[i]);
+	}
+	int sum = 0;
+	for (int x = 0; x <= max - 3; x++) {
+		for (int y = x + 1; y <= max - 2; y++) {
+			for (int z = y + 1; z <= max - 1; z++) {
+				if (arr[x] + arr[y] + arr[z] <= target) {
+					if (arr[x] + arr[y] + arr[z] == target) {
+						printf("%d", target);
+						return 0;
+					}
+					else if (arr[x] + arr[y] + arr[z] > sum) {
+						sum = arr[x] + arr[y] + arr[z];
+					}
+				}
+			}
+		}
+	}
+		printf("%d", sum);
+
+	return 0;
+}
