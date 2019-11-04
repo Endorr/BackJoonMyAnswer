@@ -1,0 +1,37 @@
+#include <stdio.h>
+#define MAX 1000000
+
+int main() {
+	char arr[MAX];
+	int alpha[26] = { 0 };
+	int max = -1;
+	int isTie = 0;
+	int maxCH;
+
+	scanf("%s", arr);
+
+	for (int i = 0; arr[i] != '\0'; i++) {//65 97
+		if (arr[i] >= 97) {
+			arr[i] -= 32;
+		}
+		alpha[arr[i] - 65]++;
+	}
+
+	for (int i = 0; i < 26; i++) {
+		if (max < alpha[i]) {
+			max = alpha[i];
+			isTie = 0;
+			maxCH = i;
+		}
+		else if (max == alpha[i]) {
+			isTie = 1;
+		}
+	}
+
+	if (isTie) {
+		printf("?");
+	}
+	else {
+		printf("%c", maxCH + 65);
+	}
+}
