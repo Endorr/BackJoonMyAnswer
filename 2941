@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int check(char* word,int len) {
+	int result = 0;
+	for (int i = 0; word[i] != '\0'; i++) {
+		switch (word[i])
+		{
+			case '-':
+				break;
+			case '=':
+				break;
+			case 'j':
+				if (i == 0) {
+					result++;
+				}
+				else if (word[i - 1] == 'l' || word[i - 1] == 'n') {
+
+				}
+				else {
+					result++;
+				}
+				break;
+			case 'z':
+					if (i == 0||i==len-1) {
+						result++;
+					}
+					else if (word[i + 1] == '='&&word[i-1]=='d') {
+						
+					}
+					else {
+						result++;
+					}
+					break;
+			default:
+				result++;
+				break;
+		}
+	}
+	return result;
+}
+
+int main() {
+	int len;
+	char word[101];
+	scanf("%s", word);
+	for (len = 0; word[len] != '\0'; len++) {
+	}
+	printf("%d",check(word,len));
+	return 0;
+}
