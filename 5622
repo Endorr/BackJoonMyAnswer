@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int change(char a) {
+	int temp;
+	if (a < 'P') {
+		temp = a / 3;
+		switch (a % 3) {
+			case 0:
+				temp -= 20;
+				break;
+			case 1:
+				temp -= 20;
+				break;
+			case 2:
+				temp -= 19;
+				break;
+		}
+	}
+	else if(a/3==28){
+		temp = a / 3;
+		temp -= 20;
+	}
+	else {
+		temp = a / 4;
+		if (temp == 21)
+			temp -= 12;
+		else
+			temp -= 13;
+	}
+	return temp;
+}
+
+int calculTime(int a) {
+	return a + 1;
+}
+
+int main() {
+	int sum=0;
+	char word[15];
+		scanf("%s", word);
+		for (int i = 0; word[i] != '\0'; i++) {
+			sum += calculTime(change(word[i]));
+		}
+		printf("%d", sum);
+	return 0;
+}
