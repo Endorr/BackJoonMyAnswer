@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void clear(char* a) {
+	for (int i = 0; i <100; i++) {
+		a[i] = '\0';
+	}
+}
+
+int len(char* a) {
+	int i;
+	for (i = 0; a[i] != '\0'; i++);
+	return i;
+}
+
+int check(char* a,int len) {//a=97
+	int answer = 1;
+	char buffer = a[0];
+	int charSet[26] = { 0 };//-1while 0none 1done
+	charSet[buffer - 97] = -1;
+	for (int i = 0; i < len; i++) {
+		if (a[i] != buffer) {
+			if (charSet[a[i] - 97] == 1) {
+				answer = 0;
+				break;
+			}
+			else {
+				charSet[buffer - 97] = 1;
+				buffer = a[i];
+				charSet[buffer - 97] = -1;
+			}
+		}
+	}
+	return answer;
+}
+
+int main() {
+	int tryNum;
+	int checkSum = 0;
+	char word[100];
+	scanf("%d", &tryNum);
+	for (int i = 0; i < tryNum; i++) {
+		clear(word);
+		scanf("%s", word);
+		checkSum += check(word, len(word));
+	}
+	printf("%d", checkSum);
+	return 0;
+}
